@@ -6,6 +6,8 @@ import { CoursesService } from './courses.service';
             <h2>{{ title }}</h2>
             <i class="fa-star" [class.fas]="isFavourite" [class.far]="!isFavourite" (click)="onClick()"></i>
             <br/>
+            <input type="text" [(ngModel)]="content"><br/>
+            {{content | titleCase}}<br/>
             {{date | date:'mediumDate'}}
             <ul>
                 <li *ngFor="let course of courses">
@@ -18,6 +20,7 @@ import { CoursesService } from './courses.service';
 })
 export class CoursesComponent {
     isFavourite: boolean;
+    content: string;
     title = "List of courses";
     date = Date.now();
     text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
