@@ -4,6 +4,8 @@ import { CoursesService } from './courses.service';
     selector: 'courses',
     template: `
             <h2>{{ title }}</h2>
+            <i class="fa-star" [class.fas]="isFavourite" [class.far]="!isFavourite" (click)="onClick()"></i>
+            <br/>
             {{date | date:'mediumDate'}}
             <ul>
                 <li *ngFor="let course of courses">
@@ -15,6 +17,7 @@ import { CoursesService } from './courses.service';
         `
 })
 export class CoursesComponent {
+    isFavourite: boolean;
     title = "List of courses";
     date = Date.now();
     text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
@@ -24,5 +27,8 @@ export class CoursesComponent {
     }
     onSave($event){
         console.log("Button was clicked", $event);
+    }
+    onClick(){
+        this.isFavourite = !this.isFavourite;
     }
 }
