@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import { CoursesService } from './courses.service';
 @Component({
     selector: 'courses',
@@ -19,7 +19,8 @@ import { CoursesService } from './courses.service';
         `
 })
 export class CoursesComponent {
-    isFavourite: boolean;
+    @Input('is-favourite') isFavourite: boolean;
+    @Output('change') change = new EventEmitter();
     content: string;
     title = "List of courses";
     date = Date.now();
@@ -33,5 +34,10 @@ export class CoursesComponent {
     }
     onClick(){
         this.isFavourite = !this.isFavourite;
+        this.change.emit({newValue: this.isFavourite});
     }
 }
+
+export interface FavouriteChangedEventArgs {
+    newValue: boolean
+  }
