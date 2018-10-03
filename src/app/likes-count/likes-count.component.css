@@ -1,0 +1,11 @@
+i {
+    cursor: pointer;
+}
+
+.like {
+    color: deeppink;
+}
+
+.liked {
+    color: #ccc;
+}
