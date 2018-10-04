@@ -1,0 +1,15 @@
+<div class="zippy">
+    <div class="zippy-heading" [class.expanded]="isExpanded" (click)="toggle()">
+        {{title}}
+        <span>
+          <i class="fas" [ngClass]="{
+            'fa-sort-up': isExpanded,
+            'fa-sort-down': !isExpanded
+          }"
+          ></i>
+        </span>
+    </div>
+    <div *ngIf="isExpanded" class="zippy-body">
+        <ng-content></ng-content>
+    </div>
+</div>

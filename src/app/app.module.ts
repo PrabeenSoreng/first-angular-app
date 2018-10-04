@@ -11,6 +11,7 @@ import { AuthorsService } from './authors.service';
 import { SummaryPipe } from './summary.pipe';
 import { TitleCasePipe } from './title-case.pipe';
 import { LikesCountComponent } from './likes-count/likes-count.component';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LikesCountComponent } from './likes-count/likes-count.component';
     AuthorsComponent,
     SummaryPipe,
     TitleCasePipe,
-    LikesCountComponent
+    LikesCountComponent,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,
