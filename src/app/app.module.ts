@@ -12,6 +12,7 @@ import { SummaryPipe } from './summary.pipe';
 import { TitleCasePipe } from './title-case.pipe';
 import { LikesCountComponent } from './likes-count/likes-count.component';
 import { ZippyComponent } from './zippy/zippy.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ZippyComponent } from './zippy/zippy.component';
     SummaryPipe,
     TitleCasePipe,
     LikesCountComponent,
-    ZippyComponent
+    ZippyComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,

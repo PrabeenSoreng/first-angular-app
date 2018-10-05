@@ -2,6 +2,8 @@
 <app-likes-count [likes-count]="tweet.likesCount" [is-liked]="tweet.isLiked"></app-likes-count>
 <courses [is-favourite]="post.isFavourite" (change)="onFavouriteChanged($event)"></courses> -->
 
-<app-zippy name="Shipping Details">
+<!-- <app-zippy name="Shipping Details">
     Shipping details content
-</app-zippy>
+</app-zippy> -->
+
+<input type="text" [appInputFormat]="'uppercase'">
