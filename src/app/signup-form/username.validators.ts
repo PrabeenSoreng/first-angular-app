@@ -6,4 +6,15 @@ export class UsernameValidators{
             return {cannotContainSpaces: true};
         return null;
     }
+    static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+        return new Promise((resolve, reject) => {
+            // Simulating request to the server
+            setTimeout(() => {
+                if(control.value === "John")
+                    resolve({shouldBeUnique: true});
+                else
+                    resolve(null);
+            }, 1000);
+        });
+    }
 }
