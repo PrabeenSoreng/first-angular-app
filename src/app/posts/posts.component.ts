@@ -16,9 +16,9 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(){
     this.service.getAll()
-      .subscribe(response =>{
-        this.posts = response.json();
-        console.log(response.json());
+      .subscribe(posts =>{
+        this.posts = posts;
+        console.log(posts);
       });
   }
 
@@ -26,13 +26,16 @@ export class PostsComponent implements OnInit {
     let post = {
       title: input.value
     }
+    this.posts.splice(0, 0, post);
     input.value = '';
+
     this.service.create(post)
-      .subscribe(response => {
-        post['id'] = response.json().id;
-        this.posts.splice(0, 0, post);
-        console.log(response.json());
+      .subscribe(newPost => {
+        post['id'] = newPost.id;
+        console.log(newPost);
       }, (error: AppError) => {
+        this.posts.splice(0, 1);
+
         if(error instanceof BadInput){
           //this.form.setErrors(error.originalError);
         }
@@ -41,16 +44,18 @@ export class PostsComponent implements OnInit {
   }
   updatePost(post){
     this.service.update(post)
-      .subscribe(response => {
-        console.log(response.json());
+      .subscribe(updatedPost => {
+        console.log(updatedPost);
       });
   }
   deletePost(post){
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+        
     this.service.delete(post)
-      .subscribe(response =>{
-        let index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-      }, (error: AppError) => {
+      .subscribe(null, (error: AppError) => {
+        this.posts.splice(index, 0, post);
+
         if(error instanceof NotFoundError)
           alert('This post has already been deleted.')
         else throw error;
