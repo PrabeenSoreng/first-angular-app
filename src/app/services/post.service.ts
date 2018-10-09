@@ -1,25 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { post } from 'selenium-webdriver/http';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
-  private url = 'https://jsonplaceholder.typicode.com/posts';
+export class PostService extends DataService {
 
-  constructor(private http: Http) { }
+  constructor(http: Http) {
+    super('https://jsonplaceholder.typicode.com/posts', http);
+  }
 
-  getPosts(){
-    return this.http.get(this.url);
-  }
-  createPost(post){
-    return this.http.post(this.url, JSON.stringify(post));
-  }
-  updatePost(post){
-    return this.http.patch(this.url+'/'+post.id,  JSON.stringify({isRead: true}));
-  }
-  deletePost(post){
-    return this.http.delete(this.url+'/'+post.id);
-  }
+  
 }
