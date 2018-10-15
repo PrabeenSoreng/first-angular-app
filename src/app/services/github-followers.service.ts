@@ -8,6 +8,6 @@ import { Http } from '@angular/http';
 export class GithubFollowersService extends DataService {
 
   constructor(http: Http) {
-    super('https://api.github.com/users/PrabeenSoreng/followers', http);
+    super('https://api.github.com/users/mosh-hamedani/followers', http);
   }
 }
